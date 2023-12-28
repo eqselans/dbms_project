@@ -44,7 +44,7 @@
 			// pictureBox1
 			// 
 			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(-29, 67);
+			pictureBox1.Location = new Point(-32, 67);
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.Size = new Size(558, 447);
 			pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -56,7 +56,7 @@
 			label1.AutoSize = true;
 			label1.BackColor = SystemColors.Control;
 			label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point);
-			label1.Location = new Point(10, 402);
+			label1.Location = new Point(19, 401);
 			label1.Name = "label1";
 			label1.Size = new Size(483, 38);
 			label1.TabIndex = 1;
@@ -117,9 +117,10 @@
 			label4.ForeColor = SystemColors.AppWorkspace;
 			label4.Location = new Point(6, 710);
 			label4.Name = "label4";
-			label4.Size = new Size(224, 25);
+			label4.Size = new Size(214, 25);
 			label4.TabIndex = 3;
-			label4.Text = "Bu bir EA Yazılım ürünüdür.";
+			label4.Text = "Bu bir KONAMI ürünüdür.";
+			label4.Click += label4_Click;
 			// 
 			// materialCheckbox1
 			// 
@@ -135,12 +136,13 @@
 			materialCheckbox1.Size = new Size(35, 37);
 			materialCheckbox1.TabIndex = 4;
 			materialCheckbox1.UseVisualStyleBackColor = false;
+			materialCheckbox1.CheckedChanged += materialCheckbox1_CheckedChanged_1;
 			// 
 			// GirisFormu
 			// 
 			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(499, 761);
+			ClientSize = new Size(514, 754);
 			Controls.Add(materialCheckbox1);
 			Controls.Add(label4);
 			Controls.Add(btnGiris);
@@ -150,6 +152,7 @@
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(pictureBox1);
+			FormBorderStyle = FormBorderStyle.FixedSingle;
 			Name = "GirisFormu";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "BYTELAND OTOMASYON SİSTEMİ - GİRİŞ";

@@ -8,33 +8,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
-using MaterialSkin.Controls;
-
 namespace Deneme
 {
-	public partial class GirisFormu : MaterialForm
+	public partial class GirisFormu : Form
 	{
 		public GirisFormu()
 		{
 			InitializeComponent();
 		}
-		NpgsqlConnection conn = new NpgsqlConnection("server=localHost; port=5432; Database=deneme; user ID=postgres; password=672854");
+		NpgsqlConnection conn = new NpgsqlConnection("server=localHost; port=5432; Database=Db_byteland; user ID=postgres; password=672854");
 
 		private void btnGiris_Click(object sender, EventArgs e)
 		{
 
 			conn.Open();
-			NpgsqlCommand cmd = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"Kullanici\"\r\n WHERE \"KullaniciAdi\"\r\n=@username AND \"Sifre\"\r\n=@password", conn);
-			cmd.Parameters.AddWithValue("username", txtKullaniciAdi.Text);
-			cmd.Parameters.AddWithValue("password", txtSifre.Text);
+
+
+			NpgsqlCommand cmd = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"Kullanici\"\r\n WHERE \"kullaniciAdi\"\r\n=@username AND \"kullaniciSifre\"\r\n=@password", conn);
+			cmd.Parameters.AddWithValue("username", "emrhn");
+			cmd.Parameters.AddWithValue("password", "672854");
 
 			int i = Convert.ToInt32(cmd.ExecuteScalar());
 			if (i > 0)
 			{
 				MessageBox.Show("Hoþgeldin", "Hoþgeldin", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				this.Close();
+				Ana ana = new Ana();
+				ana.Show();
+				this.Hide();
 			}
+		}
 
+		private void materialCheckbox1_CheckedChanged_1(object sender, EventArgs e)
+		{
+			if (txtSifre.PasswordChar == '*')
+			{
+				txtSifre.PasswordChar = '\0';
+			}
+			else
+			{
+				txtSifre.PasswordChar = '*';
+			}
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
 
 		}
 
@@ -54,5 +71,6 @@ namespace Deneme
 		//	Form2 form2 = new Form2();
 		//	form2.Show();
 		//}
+
 	}
 }
